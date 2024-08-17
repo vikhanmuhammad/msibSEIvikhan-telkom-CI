@@ -166,9 +166,9 @@ class Beranda extends CI_Controller {
         $url = 'http://localhost:8080/lokasi/' . $id;
         $response = $this->curl->simple_delete($url, array(CURLOPT_RETURNTRANSFER => true));
         
-        if ($this->curl->info['http_code'] == 500) {
-            echo '<script>alert("Lokasi masih terhubung dengan proyek tertentu");</script>';
-        }
+        // if ($this->curl->info['http_code'] == 500) {
+        //     echo '<script>alert("Lokasi masih terhubung dengan proyek tertentu");</script>';
+        // }
         
         redirect('beranda');
     }

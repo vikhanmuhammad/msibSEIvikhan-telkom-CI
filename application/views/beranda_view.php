@@ -26,48 +26,52 @@
 
     <h2>Daftar Lokasi</h2>
     <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama Lokasi</th>
-                <th>Negara</th>
-                <th>Provinsi</th>
-                <th>Kota</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($lokasi)) : ?>
-                <?php foreach ($lokasi as $item) : ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($item['id']); ?></td>
-                        <td><?php echo htmlspecialchars($item['namaLokasi']); ?></td>
-                        <td><?php echo htmlspecialchars($item['negara']); ?></td>
-                        <td><?php echo htmlspecialchars($item['provinsi']); ?></td>
-                        <td><?php echo htmlspecialchars($item['kota']); ?></td>
-                        <td>
-                            <a href="<?php echo site_url('beranda/edit_lokasi/' . $item['id']); ?>">
-                                <button class="action-button" id="tombol_edit">Edit</button>
-                            </a>
-                            <a href="<?php echo site_url('beranda/delete_lokasi/' . $item['id']); ?>" onclick="return confirm('Yakin ingin menghapus lokasi ini?');">
-                                <button class="action-button" id="tombol_hapus">Hapus</button>
-                            </a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else : ?>
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>ID Lokasi</th>
+        <th>Nama Lokasi</th>
+        <th>Negara</th>
+        <th>Provinsi</th>
+        <th>Kota</th>
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($lokasi)) : ?>
+            <?php $no = 1;?>
+            <?php foreach ($lokasi as $item) : ?>
                 <tr>
-                    <td colspan="6">Tidak ada data.</td>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo htmlspecialchars($item['id']); ?></td>
+                    <td><?php echo htmlspecialchars($item['namaLokasi']); ?></td>
+                    <td><?php echo htmlspecialchars($item['negara']); ?></td>
+                    <td><?php echo htmlspecialchars($item['provinsi']); ?></td>
+                    <td><?php echo htmlspecialchars($item['kota']); ?></td>
+                    <td>
+                        <a href="<?php echo site_url('beranda/edit_lokasi/' . $item['id']); ?>">
+                            <button class="action-button" id="tombol_edit">Edit</button>
+                        </a>
+                        <a href="<?php echo site_url('beranda/delete_lokasi/' . $item['id']); ?>" onclick="return confirm('Yakin ingin menghapus lokasi ini?');">
+                            <button class="action-button" id="tombol_hapus">Hapus</button>
+                        </a>
+                    </td>
                 </tr>
-            <?php endif; ?>
-        </tbody>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <tr>
+                <td colspan="7">Tidak ada data.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
     </table>
 
     <h2>Daftar Proyek</h2>
     <table border="1">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
+                <th>ID Proyek</th>
                 <th>Nama Proyek</th>
                 <th>Client</th>
                 <th>Tanggal Mulai</th>
@@ -80,8 +84,10 @@
         </thead>
         <tbody>
             <?php if (!empty($proyek)) : ?>
+                <?php $no = 1;?>
                 <?php foreach ($proyek as $item) : ?>
                     <tr>
+                        <td><?php echo $no++; ?></td>
                         <td><?php echo htmlspecialchars($item['id']); ?></td>
                         <td><?php echo htmlspecialchars($item['namaProyek']); ?></td>
                         <td><?php echo htmlspecialchars($item['client']); ?></td>
@@ -102,7 +108,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <tr>
-                    <td colspan="9">Tidak ada data.</td>
+                    <td colspan="10">Tidak ada data.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
